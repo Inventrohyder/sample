@@ -36,6 +36,7 @@ lint:
     - trufflehog@3.90.8
     - yamllint@1.37.1
   disabled:
+    - biome # Disabled because it isn't fully ready to replace prettier + eslint that we currently have
     - markdown-link-check # Disabled due to Cloudflare protection on anti-bot protection sites
 actions:
   enabled:
