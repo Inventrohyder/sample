@@ -26,6 +26,7 @@ lint:
     - oxipng@9.1.5
     - prettier@3.6.2
     - semgrep@1.139.0
+    - sort-package-json@3.4.0
     - trufflehog@3.90.8
     - yamllint@1.37.1
 actions:
