@@ -14,6 +14,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 - [x] Setup trunk.io as a metalinter to maintain code quality
 - [x] Setup trunk.io as a GitHub Actions CI/CD pipeline
+- [x] Setup dependabot to keep dependencies up to date
 
 ## Get started
 
