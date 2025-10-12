@@ -11,6 +11,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 ### Core
 
 - [x] Setup the project fonts as documented in the figma design (Cardo, and Commissioner)
+- [x] Setup the project theme as documented in the figma design (colors, spacing, border radius)
 
 ### Additional
 
