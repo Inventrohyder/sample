@@ -14,6 +14,8 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 - [x] Setup the project theme as documented in the figma design (colors, spacing, border radius)
   - [x] _Optional:_ Added dark theme support
 - [x] Setup the first screen as documented in the figma design
+  - [x] Setup the background image as documented in the figma design
+  - [x] _Optional:_ Add a dark theme version of the background image
 
 ### Additional
 
