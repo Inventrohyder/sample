@@ -10,6 +10,8 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 ### Core
 
+- [x] Setup the project fonts as documented in the figma design (Cardo, and Commissioner)
+
 ### Additional
 
 - [x] Setup trunk.io as a metalinter to maintain code quality
@@ -54,6 +56,27 @@ This approach prioritizes code quality and maintainability over traditional git-
 - [Trunk-based Development](https://trunkbaseddevelopment.com/)
 - [Graphite Documentation](https://docs.graphite.dev/)
 
+## Font Usage
+
+**Cardo (Headings):**
+
+- Regular (400), Bold (700), Italic (400)
+
+**Commissioner (Body Text):**
+
+- 9 weights: Thin (100) to Black (900)
+
+```typescript
+import { FONTS, TYPOGRAPHY } from './constants/fonts';
+
+// Use predefined styles
+<Text style={TYPOGRAPHY.H1}>Heading</Text>
+<Text style={TYPOGRAPHY.BODY}>Body text</Text>
+
+// Use specific fonts
+<Text style={{ fontFamily: FONTS.CARDO.BOLD }}>Bold Heading</Text>
+<Text style={{ fontFamily: FONTS.COMMISSIONER.MEDIUM }}>Medium Text</Text>
+
 ## Learn more
 
 To learn more about developing your project with Expo, look at the following resources:
@@ -67,3 +90,4 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```
