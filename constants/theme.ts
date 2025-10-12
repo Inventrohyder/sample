@@ -22,6 +22,23 @@ export const COLORS = {
   SECONDARY_CLOUD: "#9F9FAD",
 } as const;
 
+// Dark theme color palette
+export const DARK_COLORS = {
+  // Text colors (light on dark)
+  PRIMARY_TEXT: "#F8F4F3",
+  SECONDARY_TEXT: "#C4C4C4",
+
+  // Background colors (dark)
+  PRIMARY_BG: "#0C1605",
+  SECONDARY_BG: "#1A1F16",
+  WHITE: "#121212",
+
+  // Accent colors (adjusted for dark mode)
+  SECONDARY_BREEZE: "#4DD0C1", // Slightly darker teal for better contrast on dark backgrounds
+  SECONDARY_GREY: "#2C2C2C",
+  SECONDARY_CLOUD: "#6B6B7A", // Darker version for better contrast on dark backgrounds
+} as const;
+
 /**
  * Color palette type (supports both light and dark)
  */
@@ -93,6 +110,9 @@ function createTheme(colors: ColorPalette) {
 
 // Light theme (default)
 export const THEME = createTheme(COLORS);
+
+// Dark theme
+export const DARK_THEME = createTheme(DARK_COLORS);
 
 // Type for theme objects
 export type Theme = typeof THEME;
