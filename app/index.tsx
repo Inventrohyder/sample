@@ -1,4 +1,6 @@
 import { LinearGradient } from "expo-linear-gradient";
+import * as Haptics from "expo-haptics";
+import { router } from "expo-router";
 import { ImageBackground, Text, View } from "react-native";
 import Svg, { Path } from "react-native-svg";
 import { Button } from "../components/Button";
@@ -109,7 +111,13 @@ export default function Index() {
               </Text>
             </View>
 
-            <Button size="regular" onPress={() => {}}>
+            <Button
+              size="regular"
+              onPress={() => {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                router.replace("/questionnaire");
+              }}
+            >
               Start Now
             </Button>
           </View>

@@ -40,6 +40,7 @@ export default function RootLayout() {
     <ThemeProvider>
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="questionnaire" options={{ headerShown: false }} />
       </Stack>
     </ThemeProvider>
   );

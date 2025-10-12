@@ -16,6 +16,8 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 - [x] Setup the first screen as documented in the figma design
   - [x] Setup the background image as documented in the figma design
   - [x] _Optional:_ Add a dark theme version of the background image
+- [x] Setup the questionnaire screen as documented in the figma design
+  - [x] _Optional:_ Add a subtle haptic feedback when the user clicks the button to start the questionnaire
 
 ### Additional
 
