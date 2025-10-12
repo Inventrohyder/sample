@@ -19,6 +19,10 @@ import type { ColorPalette } from "./theme";
  */
 function createThemedTypography(colors: ColorPalette) {
   return {
+    DISPLAY_LARGE: {
+      ...TYPOGRAPHY.DISPLAY_LARGE,
+      color: colors.PRIMARY_TEXT,
+    },
     // Heading styles with theme colors
     H1: {
       ...TYPOGRAPHY.H1,

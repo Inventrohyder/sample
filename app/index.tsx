@@ -1,228 +1,91 @@
-import { ScrollView, Text, View } from "react-native";
+import { Text, View } from "react-native";
+import Svg, { Path } from "react-native-svg";
 import { Button } from "../components/Button";
-import { FONTS } from "../constants";
 import { useTheme } from "../contexts/ThemeContext";
 
 export default function Index() {
-  const { theme, typography, colorScheme } = useTheme();
+  const { theme, typography } = useTheme();
 
   return (
-    <ScrollView
-      style={[
-        {
-          flex: 1,
-          padding: theme.spacing.lg,
-        },
-        theme.background.primary,
-      ]}
-      contentContainerStyle={{
-        paddingTop: 60,
-        paddingBottom: 40,
-      }}
+    <View
+      style={[theme.background.primary, { flex: 1, padding: theme.spacing.lg }]}
     >
-      {/* Theme Indicator */}
-      <View style={{ marginBottom: theme.spacing.xl, alignItems: "center" }}>
-        <Text style={[typography.H2, { marginBottom: theme.spacing.sm }]}>
-          Current Theme: {colorScheme}
+      <View
+        style={[
+          {
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            justifyContent: "center",
+            alignItems: "center",
+            padding: theme.spacing.lg,
+          },
+        ]}
+        pointerEvents="box-none"
+      >
+        <Text style={[typography.DISPLAY_LARGE, { textAlign: "center" }]}>
+          Your healing journey starts here
         </Text>
-        <Text style={typography.BODY_SMALL}>
-          (Automatically follows system preference)
-        </Text>
-      </View>
-
-      {/* Cardo Font Examples - Headings and Titles */}
-      <View style={{ marginBottom: theme.spacing.xl }}>
-        <Text style={[typography.H1, { marginBottom: theme.spacing.lg }]}>
-          Cardo Font Examples
-        </Text>
-
-        <Text style={[typography.H2, { marginBottom: theme.spacing.md }]}>
-          This is H2 Heading
-        </Text>
-
-        <Text style={[typography.H3, { marginBottom: theme.spacing.sm }]}>
-          This is H3 Heading
-        </Text>
-
-        <Text style={[typography.H4, { marginBottom: theme.spacing.sm }]}>
-          This is H4 Heading
-        </Text>
-
-        <Text style={[typography.H5, { marginBottom: theme.spacing.xs }]}>
-          This is H5 Heading
-        </Text>
-
-        <Text style={[typography.H6, { marginBottom: theme.spacing.xs }]}>
-          This is H6 Heading
+        <Text style={[typography.BODY_LARGE, { textAlign: "center" }]}>
+          Complete a short questionnaire to unlock your personal burnout plan
         </Text>
       </View>
 
-      {/* Commissioner Font Examples - Body Text */}
-      <View style={{ marginBottom: theme.spacing.xl }}>
-        <Text style={[typography.H2, { marginBottom: theme.spacing.lg }]}>
-          Commissioner Font Examples
-        </Text>
-
-        <Text
-          style={[typography.BODY_LARGE, { marginBottom: theme.spacing.md }]}
+      <View
+        style={[
+          {
+            flex: 1,
+            justifyContent: "flex-end",
+            alignItems: "center",
+            paddingBottom: theme.spacing.sm,
+          },
+        ]}
+      >
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            paddingBottom: theme.spacing.md,
+          }}
         >
-          This is large body text using Commissioner Regular. It&apos;s perfect
-          for important paragraphs and descriptions.
-        </Text>
+          <Svg
+            width={24}
+            height={24}
+            viewBox="0 0 24 24"
+            style={{ marginRight: theme.spacing.xs }}
+          >
+            <Path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M8.25 2C8.25 1.58579 8.58579 1.25 9 1.25L15 1.25C15.4142 1.25 15.75 1.58579 15.75 2C15.75 2.41421 15.4142 2.75 15 2.75L9 2.75C8.58579 2.75 8.25 2.41421 8.25 2Z"
+              fill={theme.colors.SECONDARY_TEXT}
+            />
+            <Path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M12 9.25C12.4142 9.25 12.75 9.58579 12.75 10L12.75 14C12.75 14.4142 12.4142 14.75 12 14.75C11.5858 14.75 11.25 14.4142 11.25 14L11.25 10C11.25 9.58579 11.5858 9.25 12 9.25Z"
+              fill={theme.colors.SECONDARY_TEXT}
+            />
+            <Path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M12 6.75C7.99594 6.75 4.75 9.99594 4.75 14C4.75 18.0041 7.99594 21.25 12 21.25C16.0041 21.25 19.25 18.0041 19.25 14C19.25 9.99594 16.0041 6.75 12 6.75ZM3.25 14C3.25 9.16751 7.16751 5.25 12 5.25C16.8325 5.25 20.75 9.16751 20.75 14C20.75 18.8325 16.8325 22.75 12 22.75C7.16751 22.75 3.25 18.8325 3.25 14Z"
+              fill={theme.colors.SECONDARY_TEXT}
+            />
+          </Svg>
+          <Text
+            style={[typography.BODY, { color: theme.colors.SECONDARY_TEXT }]}
+          >
+            ~5 min to complete
+          </Text>
+        </View>
 
-        <Text style={[typography.BODY, { marginBottom: theme.spacing.sm }]}>
-          This is regular body text using Commissioner Regular. It&apos;s ideal
-          for most content and readable text.
-        </Text>
-
-        <Text
-          style={[typography.BODY_SMALL, { marginBottom: theme.spacing.sm }]}
-        >
-          This is small body text using Commissioner Regular. Great for
-          secondary information and captions.
-        </Text>
-
-        <Text style={[typography.CAPTION, { marginBottom: theme.spacing.xs }]}>
-          This is caption text using Commissioner Medium.
-        </Text>
-
-        <Text style={[typography.LABEL, { marginBottom: theme.spacing.xs }]}>
-          This is label text using Commissioner Medium.
-        </Text>
-      </View>
-
-      {/* Font Weight Examples */}
-      <View style={{ marginBottom: theme.spacing.xl }}>
-        <Text style={[typography.H2, { marginBottom: theme.spacing.lg }]}>
-          Commissioner Weight Examples
-        </Text>
-
-        <Text
-          style={[
-            typography.BODY,
-            {
-              fontFamily: FONTS.COMMISSIONER.THIN,
-              marginBottom: theme.spacing.xs,
-            },
-          ]}
-        >
-          Thin: The quick brown fox jumps over the lazy dog
-        </Text>
-
-        <Text
-          style={[
-            typography.BODY,
-            {
-              fontFamily: FONTS.COMMISSIONER.LIGHT,
-              marginBottom: theme.spacing.xs,
-            },
-          ]}
-        >
-          Light: The quick brown fox jumps over the lazy dog
-        </Text>
-
-        <Text
-          style={[
-            typography.BODY,
-            {
-              fontFamily: FONTS.COMMISSIONER.REGULAR,
-              marginBottom: theme.spacing.xs,
-            },
-          ]}
-        >
-          Regular: The quick brown fox jumps over the lazy dog
-        </Text>
-
-        <Text
-          style={[
-            typography.BODY,
-            {
-              fontFamily: FONTS.COMMISSIONER.MEDIUM,
-              marginBottom: theme.spacing.xs,
-            },
-          ]}
-        >
-          Medium: The quick brown fox jumps over the lazy dog
-        </Text>
-
-        <Text
-          style={[
-            typography.BODY,
-            {
-              fontFamily: FONTS.COMMISSIONER.SEMI_BOLD,
-              marginBottom: theme.spacing.xs,
-            },
-          ]}
-        >
-          Semi Bold: The quick brown fox jumps over the lazy dog
-        </Text>
-
-        <Text
-          style={[
-            typography.BODY,
-            {
-              fontFamily: FONTS.COMMISSIONER.BOLD,
-              marginBottom: theme.spacing.xs,
-            },
-          ]}
-        >
-          Bold: The quick brown fox jumps over the lazy dog
-        </Text>
-
-        <Text
-          style={[
-            typography.BODY,
-            {
-              fontFamily: FONTS.COMMISSIONER.EXTRA_BOLD,
-              marginBottom: theme.spacing.xs,
-            },
-          ]}
-        >
-          Extra Bold: The quick brown fox jumps over the lazy dog
-        </Text>
-
-        <Text
-          style={[
-            typography.BODY,
-            {
-              fontFamily: FONTS.COMMISSIONER.BLACK,
-              marginBottom: theme.spacing.xs,
-            },
-          ]}
-        >
-          Black: The quick brown fox jumps over the lazy dog
-        </Text>
-      </View>
-
-      {/* Button Examples */}
-      <View style={{ marginBottom: theme.spacing.xl }}>
-        <Text style={[typography.H2, { marginBottom: theme.spacing.lg }]}>
-          Button Examples
-        </Text>
-
-        <Button
-          size="large"
-          onPress={() => console.log("Large button pressed")}
-          style={{ marginBottom: theme.spacing.sm }}
-        >
-          Large Button
-        </Button>
-
-        <Button
-          size="regular"
-          onPress={() => console.log("Regular button pressed")}
-          style={{ marginBottom: theme.spacing.sm }}
-        >
-          Regular Button
-        </Button>
-
-        <Button
-          size="small"
-          onPress={() => console.log("Small button pressed")}
-        >
-          Small Button
+        <Button size="regular" onPress={() => {}}>
+          Start Now
         </Button>
       </View>
-    </ScrollView>
+    </View>
   );
 }
