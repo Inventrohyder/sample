@@ -18,6 +18,13 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
   - [x] _Optional:_ Add a dark theme version of the background image
 - [x] Setup the questionnaire screen as documented in the figma design
   - [x] _Optional:_ Add a subtle haptic feedback when the user clicks the button to start the questionnaire
+- [x] Setup the questionnaire data as documented in the figma design
+- [x] Animate the background image as the user progresses through the questionnaire as documented in the figma design
+  - [x] _Optional:_ Animate the progress bar as the user progresses through the questionnaire
+  - [x] _Optional:_ Animate the buttons as the user progresses through the questionnaire
+  - [x] _Optional:_ Animate the questions as the user progresses through the questionnaire
+  - [x] _Optional:_ Animate the options as the user selects a response
+  - [x] _Optional:_ Support dark theme
 
 ### Additional
 
