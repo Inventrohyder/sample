@@ -25,15 +25,19 @@ In the output, you'll find options to open the app in a
 
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-## Get a fresh project
+## Development Workflow
 
-When you're ready, run:
+This project uses **trunk-based development** with **Graphite (gt)** for stacked changes, enabling:
 
-```bash
-npm run reset-project
-```
+- **Small, focused commits** that are independently reviewable and mergeable
+- **Easy rollbacks** with granular change management
+- **Simplified branching** with fewer merge conflicts
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+This approach prioritizes code quality and maintainability over traditional git-flow complexity.
+
+**Learn more about trunk-based development:**
+- [Trunk-based Development](https://trunkbaseddevelopment.com/)
+- [Graphite Documentation](https://docs.graphite.dev/)
 
 ## Learn more
 
