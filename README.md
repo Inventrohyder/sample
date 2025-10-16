@@ -6,6 +6,14 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 ![Sample Demo](./demo/demo_video.gif)
 
+## Feature set
+
+### Core
+
+### Additional
+
+- [x] Setup trunk.io as a metalinter to maintain code quality
+
 ## Get started
 
 1. Install dependencies
@@ -40,6 +48,7 @@ This project uses **trunk-based development** with **Graphite (gt)** for stacked
 This approach prioritizes code quality and maintainability over traditional git-flow complexity.
 
 **Learn more about trunk-based development:**
+
 - [Trunk-based Development](https://trunkbaseddevelopment.com/)
 - [Graphite Documentation](https://docs.graphite.dev/)
 
