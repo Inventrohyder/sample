@@ -15,6 +15,7 @@ export const COLORS = {
   PRIMARY_BG: "#F8F4F3",
   SECONDARY_BG: "#F2F3EF",
   WHITE: "#FFFFFF",
+  GRADIENT_OVERLAY: "#F4F5F2", // Gradient overlay color for background images
 
   // Accent colors
   SECONDARY_BREEZE: "#81E4DA",
@@ -32,6 +33,7 @@ export const DARK_COLORS = {
   PRIMARY_BG: "#0C1605",
   SECONDARY_BG: "#1A1F16",
   WHITE: "#121212",
+  GRADIENT_OVERLAY: "#0C1605", // Dark gradient overlay color for background images
 
   // Accent colors (adjusted for dark mode)
   SECONDARY_BREEZE: "#4DD0C1", // Slightly darker teal for better contrast on dark backgrounds
@@ -48,6 +50,7 @@ export type ColorPalette = {
   readonly PRIMARY_BG: string;
   readonly SECONDARY_BG: string;
   readonly WHITE: string;
+  readonly GRADIENT_OVERLAY: string;
   readonly SECONDARY_BREEZE: string;
   readonly SECONDARY_GREY: string;
   readonly SECONDARY_CLOUD: string;
