@@ -42,6 +42,12 @@ export const FONTS = {
 // Typography styles for common use cases (pure typography, no colors)
 export const TYPOGRAPHY = {
   // Heading styles using Cardo
+  DISPLAY_LARGE: {
+    fontFamily: FONTS.CARDO.REGULAR,
+    fontSize: 44,
+    lineHeight: 52.8, // 120% of 44
+    fontWeight: FONT_WEIGHTS.REGULAR,
+  },
   H1: {
     fontFamily: FONTS.CARDO.BOLD,
     fontSize: 32,
@@ -82,8 +88,8 @@ export const TYPOGRAPHY = {
   // Body text styles using Commissioner
   BODY_LARGE: {
     fontFamily: FONTS.COMMISSIONER.REGULAR,
-    fontSize: 18,
-    lineHeight: 28,
+    fontSize: 20,
+    lineHeight: 30, // 150% of 20
     fontWeight: FONT_WEIGHTS.REGULAR,
   },
   BODY: {
