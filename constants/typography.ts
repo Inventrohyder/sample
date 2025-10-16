@@ -8,7 +8,7 @@
  */
 
 import { TYPOGRAPHY } from "./fonts";
-import { COLORS } from "./theme";
+import { COLORS, DARK_COLORS } from "./theme";
 
 import type { ColorPalette } from "./theme";
 
@@ -87,6 +87,9 @@ function createThemedTypography(colors: ColorPalette) {
 
 // Light theme typography (default)
 export const LIGHT_TYPOGRAPHY = createThemedTypography(COLORS);
+
+// Dark theme typography
+export const DARK_TYPOGRAPHY = createThemedTypography(DARK_COLORS);
 
 // Export light theme as default THEMED_TYPOGRAPHY for backwards compatibility
 export const THEMED_TYPOGRAPHY = LIGHT_TYPOGRAPHY;
