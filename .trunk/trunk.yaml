@@ -34,6 +34,8 @@ lint:
     - trivy@0.67.2
     - trufflehog@3.90.8
     - yamllint@1.37.1
+  disabled:
+    - markdown-link-check # Disabled due to Cloudflare protection on anti-bot protection sites
 actions:
   enabled:
     - trunk-announce
