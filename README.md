@@ -31,6 +31,11 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 - [x] Setup trunk.io as a metalinter to maintain code quality
 - [x] Setup trunk.io as a GitHub Actions CI/CD pipeline
 - [x] Setup dependabot to keep dependencies up to date
+- [ ] Setup supabase to provide the questions inside of the current questionnaire data
+- [ ] Build out the submission screen
+- [ ] Setup posthog to track the user's progress through the questionnaire
+- [ ] Setup sentry to track errors
+- [ ] Create appropriate app icons for the app
 
 ## Get started
 
