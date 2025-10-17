@@ -31,7 +31,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 - [x] Setup trunk.io as a metalinter to maintain code quality
 - [x] Setup trunk.io as a GitHub Actions CI/CD pipeline
 - [x] Setup dependabot to keep dependencies up to date
-- [ ] Setup supabase to provide the questions inside of the current questionnaire data
+- [x] Setup Supabase to provide questions dynamically from database
 - [ ] Build out the submission screen
 - [ ] Setup posthog to track the user's progress through the questionnaire
 - [ ] Setup sentry to track errors
@@ -45,7 +45,31 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    npm install
    ```
 
-2. Start the app
+2. Configure environment variables
+
+   ```bash
+   # For production (cloud Supabase)
+   npm run env:prod
+
+   # For local development (see Supabase Setup below)
+   npm run env:local
+   ```
+
+   Or manually:
+
+   ```bash
+   # Copy the example environment file
+   cp .env.example .env
+
+   # Edit .env and add your Supabase credentials
+   # Get these from: https://supabase.com/dashboard/project/_/settings/api
+   ```
+
+   Required environment variables:
+   - `EXPO_PUBLIC_SUPABASE_URL` - Your Supabase project URL
+   - `EXPO_PUBLIC_SUPABASE_ANON_KEY` - Your Supabase anon/public API key
+
+3. Start the app
 
    ```bash
    npx expo start
@@ -59,6 +83,57 @@ In the output, you'll find options to open the app in a
 - [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+
+## Supabase Setup
+
+### Local Development (Recommended)
+
+Run Supabase locally for faster development with instant schema changes:
+
+```bash
+# Start local Supabase (requires Docker)
+npm run db:start
+
+# Check status and get connection details
+npm run db:status
+
+# Switch to local environment
+npm run env:local
+
+# Apply migrations
+npm run db:reset
+
+# Generate TypeScript types
+npm run db:types
+
+# Stop local Supabase
+npm run db:stop
+```
+
+### Cloud Development
+
+For testing with cloud Supabase or manual branches:
+
+```bash
+# Switch to production environment
+npm run env:prod
+
+# Or manually create a branch in Supabase Dashboard:
+# https://supabase.com/dashboard/project/szvmbgmxqwygickaqmvs/branches
+```
+
+### Database Commands
+
+```bash
+npm run db:start        # Start local Supabase
+npm run db:stop         # Stop local Supabase
+npm run db:reset        # Reset DB and apply all migrations
+npm run db:status       # Show connection details
+npm run db:types        # Generate TypeScript types from schema
+npm run db:migration    # Create new migration: npm run db:migration <name>
+```
+
+For detailed workflow documentation, see `docs/SUPABASE_WORKFLOW.md`.
 
 ## Development Workflow
 
