@@ -9,6 +9,7 @@ import * as Haptics from "expo-haptics";
 import { router } from "expo-router";
 import React from "react";
 import {
+  ActivityIndicator,
   Animated,
   Dimensions,
   ImageBackground,
@@ -23,7 +24,6 @@ import {
   QuestionOption,
 } from "../components/questionnaire";
 import { useTheme } from "../contexts/ThemeContext";
-import { QUESTIONS } from "../data/questions";
 import { useQuestionnaire } from "../hooks/useQuestionnaire";
 import { useQuestionTransition } from "../hooks/useQuestionTransition";
 import { hexToRgba } from "../utils/colors";
@@ -41,20 +41,23 @@ export default function Questionnaire() {
   const {
     currentQuestion,
     currentQuestionIndex,
+    totalQuestions,
     currentAnswer,
     answers,
     isLastQuestion,
     canGoNext,
     canGoPrevious,
+    isLoading,
+    error,
     handleAnswerChange,
     goToNext,
     goToPrevious,
-  } = useQuestionnaire(QUESTIONS);
+  } = useQuestionnaire();
 
   // Animation for question transitions (slide, fade, background pan)
   const { slideAnim, fadeAnim, backgroundTranslateX } = useQuestionTransition(
     currentQuestionIndex,
-    QUESTIONS.length,
+    totalQuestions,
   );
 
   const handleNext = () => {
@@ -78,6 +81,76 @@ export default function Questionnaire() {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     goToPrevious();
   };
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: theme.colors.SECONDARY_BG,
+        }}
+      >
+        <ActivityIndicator size="large" color={theme.colors.SECONDARY_BREEZE} />
+        <Text
+          style={[
+            typography.BODY,
+            {
+              marginTop: theme.spacing.md,
+              color: theme.colors.SECONDARY_TEXT,
+            },
+          ]}
+        >
+          Loading questions...
+        </Text>
+      </View>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: theme.colors.SECONDARY_BG,
+          padding: theme.spacing.lg,
+        }}
+      >
+        <Text
+          style={[
+            typography.H2,
+            {
+              marginBottom: theme.spacing.md,
+              color: theme.colors.PRIMARY_TEXT,
+            },
+          ]}
+        >
+          Error Loading Questions
+        </Text>
+        <Text
+          style={[
+            typography.BODY,
+            {
+              textAlign: "center",
+              color: theme.colors.SECONDARY_TEXT,
+            },
+          ]}
+        >
+          {error}
+        </Text>
+      </View>
+    );
+  }
+
+  // No question loaded
+  if (!currentQuestion) {
+    return null;
+  }
 
   return (
     <View style={{ flex: 1 }}>
@@ -180,7 +253,7 @@ export default function Questionnaire() {
           >
             <ProgressIndicator
               currentIndex={currentQuestionIndex}
-              total={QUESTIONS.length}
+              total={totalQuestions}
             />
 
             <NavigationControls

@@ -3,31 +3,60 @@
  * Manages questionnaire state and navigation logic
  */
 
-import { useState } from "react";
-import type { Question } from "../data/questions";
+import { useState, useEffect } from "react";
+import {
+  fetchQuestions,
+  type Question,
+} from "@/repositories/QuestionRepository";
 
 interface UseQuestionnaireReturn {
-  currentQuestion: Question;
+  currentQuestion: Question | null;
   currentQuestionIndex: number;
+  totalQuestions: number;
   currentAnswer: string | string[] | undefined;
   answers: Record<string, string | string[]>;
   isLastQuestion: boolean;
   isFirstQuestion: boolean;
   canGoNext: boolean;
   canGoPrevious: boolean;
+  isLoading: boolean;
+  error: string | null;
   handleAnswerChange: (questionId: string, answer: string | string[]) => void;
   goToNext: () => void;
   goToPrevious: () => void;
 }
 
-export function useQuestionnaire(
-  questions: Question[],
-): UseQuestionnaireReturn {
+export function useQuestionnaire(): UseQuestionnaireReturn {
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string | string[]>>({});
 
-  const currentQuestion = questions[currentQuestionIndex];
-  const currentAnswer = answers[currentQuestion.id];
+  // Load questions from Supabase on mount
+  useEffect(() => {
+    async function loadQuestions() {
+      try {
+        setIsLoading(true);
+        setError(null);
+        const data = await fetchQuestions();
+        setQuestions(data);
+      } catch (err) {
+        setError(
+          err instanceof Error ? err.message : "Failed to load questions",
+        );
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    loadQuestions();
+  }, []);
+
+  const currentQuestion = questions[currentQuestionIndex] || null;
+  const currentAnswer = currentQuestion
+    ? answers[currentQuestion.id]
+    : undefined;
   const isLastQuestion = currentQuestionIndex === questions.length - 1;
   const isFirstQuestion = currentQuestionIndex === 0;
 
@@ -42,7 +71,7 @@ export function useQuestionnaire(
   };
 
   const isAnswerValid = (): boolean => {
-    if (!currentQuestion.required) return true;
+    if (!currentQuestion || !currentQuestion.required) return true;
 
     if (currentQuestion.type === "single-select") {
       return Boolean(
@@ -76,12 +105,15 @@ export function useQuestionnaire(
   return {
     currentQuestion,
     currentQuestionIndex,
+    totalQuestions: questions.length,
     currentAnswer,
     answers,
     isLastQuestion,
     isFirstQuestion,
     canGoNext: isAnswerValid(),
     canGoPrevious: !isFirstQuestion,
+    isLoading,
+    error,
     handleAnswerChange,
     goToNext,
     goToPrevious,
